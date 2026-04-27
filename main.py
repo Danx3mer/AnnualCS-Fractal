@@ -7,7 +7,6 @@ carl = turtle.Turtle()
 carl.speed(0)
 turtle.bgcolor("black")
 
-
 def carlSetup(x, y):
     carl.penup()
     carl.goto(x, y)
@@ -20,8 +19,8 @@ wn.tracer(0)
 W, H = turtle.screensize()
 
 # different values of imaginary number c creates a different type of design
-c_real = 0.355
-c_imaginary = 0.355
+c_real = -0.8
+c_imaginary = 0.156
 
 # resolution = 2 takes around a minute and makes pizel size 2x2, resolution 1 takes 5 mins or even more
 resolution = 2
@@ -53,10 +52,11 @@ for x in range(-W, W, resolution):
         scaled_y = r / H * y
 
         # get the color according to the number of stacks it takes this pixel to stop
-        color = EscapeInfinityRecursion(scaled_x, scaled_y, 255, 0)
+        julia_color = EscapeInfinityRecursion(scaled_x, scaled_y, 255, 0)
 
         # plot
-        carl.pencolor(0, 0, color)
+        color = 255 - julia_color
+        carl.pencolor(color, color, color)
         carlSetup(x, y)
         carl.dot(resolution + 2)
 
@@ -69,4 +69,3 @@ wn.update()
 print("100% Done")
 print("Enjoy")
 wn.mainloop()
-input()
