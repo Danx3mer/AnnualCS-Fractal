@@ -59,7 +59,7 @@ for x in range(-W, W, resolution):
 
         # plot
         color = max_recursion - julia_color
-        carl.pencolor(color, 0, 0)
+        carl.pencolor(color, color, color)
         carlSetup(x, y)
         carl.dot(resolution + 2)
 
