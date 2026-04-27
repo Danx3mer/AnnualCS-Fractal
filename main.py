@@ -19,14 +19,17 @@ wn.tracer(0)
 W, H = turtle.screensize()
 
 # different values of imaginary number c creates a different type of design
-c_real = -0.8
-c_imaginary = 0.156
+c_real = 0.355
+c_imaginary = 0.355
 
 # resolution = 2 takes around a minute and makes pizel size 2x2, resolution 1 takes 5 mins or even more
 resolution = 2
+
 # escape radius
 r = 1.7
 
+# max recursion limit
+max_recursion = 255
 
 # recursion to find out how many stacks it takes for the x+yi imaginary number to escape to infinity
 # the formula x**2 + y ** 2 >= r ** 2 is used to see if z
@@ -52,11 +55,11 @@ for x in range(-W, W, resolution):
         scaled_y = r / H * y
 
         # get the color according to the number of stacks it takes this pixel to stop
-        julia_color = EscapeInfinityRecursion(scaled_x, scaled_y, 255, 0)
+        julia_color = EscapeInfinityRecursion(scaled_x, scaled_y, max_recursion, 0)
 
         # plot
-        color = 255 - julia_color
-        carl.pencolor(color, color, color)
+        color = max_recursion - julia_color
+        carl.pencolor(color, 0, 0)
         carlSetup(x, y)
         carl.dot(resolution + 2)
 
